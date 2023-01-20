@@ -52,15 +52,17 @@ public class LigneService {
         var produit = produitDao.findById(produitRef).orElseThrow();
         // On vérifie que la commande existe
         var commande = commandeDao.findById(commandeNum).orElseThrow();
+        Ligne nouvelleLigne = new Ligne(commande,produit,quantite);
         if (commande.getEnvoyeele()==null) {
             if (quantite>produit.getUnitesEnStock()) {
                 throw new RuntimeException("La quantité commandée est plus grande que la quantité en stock !");
             } else {
-                //ligneDao.save()
+                produit.setUnitesCommandees(produit.getUnitesCommandees()+quantite);
+                ligneDao.save(nouvelleLigne);
+                return nouvelleLigne;
             }
         } else {
             throw new RuntimeException("La commande a déjà été envoyée !");
         }
-        throw new UnsupportedOperationException("Cette méthode n'est pas implémentée");
     }
 }
