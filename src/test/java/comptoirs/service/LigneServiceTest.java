@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import jakarta.validation.ConstraintViolationException;
+import org.springframework.test.context.jdbc.Sql;
 
 @SpringBootTest
  // Ce test est basé sur le jeu de données dans "test_data.sql"
@@ -37,4 +38,6 @@ class LigneServiceTest {
             () -> service.ajouterLigne(NUMERO_COMMANDE_PAS_LIVREE, REFERENCE_PRODUIT_DISPONIBLE_1, 0),
             "La quantite d'une ligne doit être positive");
     }
+
+
 }
