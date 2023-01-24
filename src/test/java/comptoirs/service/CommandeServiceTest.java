@@ -25,6 +25,7 @@ class CommandeServiceTest {
 
     static final int NUMERO_COMMANDE_DEJA_LIVREE = 99999;
     static final int NUMERO_COMMANDE_PAS_LIVREE  = 99998;
+    static final int NUMERO_COMMANDE_PAS_LIVREE_2  = 99997;
 
     @Autowired
     private CommandeService service;
@@ -65,22 +66,11 @@ class CommandeServiceTest {
         assertEquals(stockAvantDecrementation-20,produit.getUnitesEnStock(),"On doit décrémenter le stock de 20 unités");
     }
 
-    /*
-    @Test
-    void testEnregistrementCommande() {
-        var commande = service.creerCommande(ID_PETIT_CLIENT);
-        var produit = produitDao.findById(1).get();
-        service.ajouterLigne(commande,produit,1);
-        service.enregistreCommande(commande);
-        assertNotNull(commande.getNumero(), "On doit avoir la clé de la commande");
-    }
-    */
-
     @Test
     void testEnregistrerLivraisonFixeDate() {
-        Commande commande = commandeDao.findById(NUMERO_COMMANDE_PAS_LIVREE).orElseThrow();
+        Commande commande = commandeDao.findById(NUMERO_COMMANDE_PAS_LIVREE_2).orElseThrow();
         assertNull(commande.getEnvoyeele(),"La commande n'est pas encore livrée");
-        commande = service.enregistreExpédition(NUMERO_COMMANDE_PAS_LIVREE);
+        commande = service.enregistreExpédition(NUMERO_COMMANDE_PAS_LIVREE_2);
         assertNotNull(commande.getEnvoyeele(),"La commande doit être livrée");
     }
 

@@ -32,3 +32,7 @@ INSERT INTO Ligne(commande_numero, produit_reference, quantite) VALUES ( 99999, 
 INSERT INTO Commande(numero, client_code, saisiele, envoyeele, port, destinataire, adresse, ville, region, code_postal, pays, remise) VALUES
     ( 99998, '2COM', '1994-11-29', NULL, 831.00, 'Bon app''', '12, rue des Bouchers', 'Marseille', NULL, '13008', 'France', 0.00);
 INSERT INTO Ligne(commande_numero, produit_reference, quantite) VALUES ( 99998, 98, 20);
+
+INSERT INTO Commande(numero, client_code, saisiele, envoyeele, port, destinataire, adresse, ville, region, code_postal, pays, remise) VALUES
+    ( 99997, '2COM', '1994-11-29', NULL, 831.00, 'Bon app''', '12, rue des Bouchers', 'Marseille', NULL, '13008', 'France', 0.00);
+INSERT INTO Ligne(commande_numero, produit_reference, quantite) VALUES ( 99997, 98, 20);

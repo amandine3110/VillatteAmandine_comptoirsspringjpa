@@ -57,9 +57,13 @@ public class LigneService {
             if (quantite>produit.getUnitesEnStock()) {
                 throw new RuntimeException("La quantité commandée est plus grande que la quantité en stock !");
             } else {
-                produit.setUnitesCommandees(produit.getUnitesCommandees()+quantite);
-                ligneDao.save(nouvelleLigne);
-                return nouvelleLigne;
+                if (produit.getIndisponible()){
+                    throw new RuntimeException("Pas disponible !");
+                }else {
+                    produit.setUnitesCommandees(produit.getUnitesCommandees() + quantite);
+                    ligneDao.save(nouvelleLigne);
+                    return nouvelleLigne;
+                }
             }
         } else {
             throw new RuntimeException("La commande a déjà été envoyée !");
